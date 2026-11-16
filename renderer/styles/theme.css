@@ -1,0 +1,125 @@
+/**
+ * theme.css - 主题变量定义
+ *
+ * 定义日间/夜间模式的所有颜色变量
+ * 通过切换 <html data-theme="dark"> 实现全局主题切换
+ *
+ * 所有颜色变量以 -- 开头，可在其他CSS文件中通过 var() 引用
+ */
+
+/* ========== 日间模式（默认） ========== */
+:root,
+[data-theme="light"] {
+  /* 背景色 */
+  --bg-primary: #ffffff;          /* 主要背景（PDF区域） */
+  --bg-secondary: #f5f5f5;        /* 次要背景（侧边栏） */
+  --bg-toolbar: #ffffff;          /* 工具栏背景 */
+  --bg-hover: #e8e8e8;            /* 悬停状态背景 */
+  --bg-active: #d0d0d0;           /* 激活状态背景 */
+
+  /* 文字颜色 */
+  --text-primary: #1a1a1a;        /* 主要文字 */
+  --text-secondary: #666666;      /* 次要文字 */
+  --text-tertiary: #999999;       /* 三级文字（提示等） */
+
+  /* 边框颜色 */
+  --border-color: #e0e0e0;        /* 边框 */
+  --border-light: #f0f0f0;        /* 浅边框 */
+
+  /* 强调色 */
+  --accent-color: #0066cc;        /* 强调色（按钮、链接） */
+  --accent-hover: #0052a3;        /* 强调色悬停 */
+
+  /* 功能色 */
+  --success-color: #28a745;       /* 成功 */
+  --warning-color: #ffc107;       /* 警告 */
+  --error-color: #dc3545;         /* 错误 */
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* PDF页面阴影 */
+  --pdf-page-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  /* 滚动条 */
+  --scrollbar-thumb: #c0c0c0;
+  --scrollbar-thumb-hover: #a0a0a0;
+  --scrollbar-track: #f0f0f0;
+}
+
+/* ========== 夜间模式 ========== */
+[data-theme="dark"] {
+  /* 背景色 */
+  --bg-primary: #1e1e1e;          /* 主要背景 */
+  --bg-secondary: #252525;        /* 次要背景 */
+  --bg-toolbar: #2d2d2d;          /* 工具栏背景 */
+  --bg-hover: #3a3a3a;            /* 悬停状态 */
+  --bg-active: #4a4a4a;           /* 激活状态 */
+
+  /* 文字颜色 */
+  --text-primary: #e0e0e0;        /* 主要文字 */
+  --text-secondary: #a0a0a0;      /* 次要文字 */
+  --text-tertiary: #707070;       /* 三级文字 */
+
+  /* 边框颜色 */
+  --border-color: #3a3a3a;        /* 边框 */
+  --border-light: #2a2a2a;        /* 浅边框 */
+
+  /* 强调色 */
+  --accent-color: #4da3ff;        /* 强调色 */
+  --accent-hover: #6bb5ff;        /* 强调色悬停 */
+
+  /* 功能色 */
+  --success-color: #4caf50;       /* 成功 */
+  --warning-color: #ff9800;       /* 警告 */
+  --error-color: #f44336;         /* 错误 */
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+
+  /* PDF页面阴影 */
+  --pdf-page-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  /* 滚动条 */
+  --scrollbar-thumb: #5a5a5a;
+  --scrollbar-thumb-hover: #7a7a7a;
+  --scrollbar-track: #2a2a2a;
+}
+
+/* ========== 通用样式 ========== */
+
+/* 平滑的主题切换过渡效果 */
+* {
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* 选中文本样式 */
+::selection {
+  background: var(--accent-color);
+  color: white;
+}
