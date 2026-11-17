@@ -321,7 +321,11 @@ html, body {
   align-items: center;
   padding: 20px;
   gap: 20px;
-  width: 100%;
+  /* 关键：宽度由内容(canvas)撑开，但至少占满容器
+     这样放大后 canvas 超宽时，容器会从右侧单向溢出 → 左右都能滚动
+     若用 width:100% + align-items:center，canvas 会居中导致左侧溢出滚不到 */
+  width: max-content;
+  min-width: 100%;
 }
 
 .pdf-viewer.dual-mode {
@@ -330,7 +334,9 @@ html, body {
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-  width: 100%;
+  /* 同单页：宽度随内容撑开，避免放大时左侧溢出滚不到 */
+  width: max-content;
+  min-width: 100%;
 }
 
 .pdf-viewer.dual-mode #pdf-canvas,

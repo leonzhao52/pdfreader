@@ -23,6 +23,13 @@ class PDFViewer {
    * @param {HTMLCanvasElement} canvasRight - 双页模式右侧canvas（可选）
    */
   constructor(canvas, canvasRight = null) {
+    // 启用 PDF.js Worker：将解析/渲染工作放到独立线程，避免阻塞主线程
+    // 路径相对于 index.html 所在目录（renderer/）
+    // 必须在调用 getDocument() 之前设置，否则 PDF.js 会退回主线程的 "fake worker"
+    if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'lib/pdfjs/pdf.worker.min.js';
+    }
+
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.canvasRight = canvasRight;
